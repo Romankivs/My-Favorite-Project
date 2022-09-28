@@ -63,7 +63,6 @@ pub async fn car_delete(conn: LibraryDbConn, uid: String, _user: StaffEntity) ->
     use schema::car::dsl::*;
     conn.run(move |c| delete(car).filter(plate_number.eq(uid)).execute(c))
         .await?;
-
     Ok(Redirect::to(uri!(car_list)))
 }
 
